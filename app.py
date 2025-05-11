@@ -2,8 +2,6 @@ import streamlit as st
 import numpy as np
 from PIL import Image, ImageOps
 from keras.models import load_model
-import gdown
-import os
 
 # Set page config
 st.set_page_config(
