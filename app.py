@@ -68,17 +68,23 @@ image = None
 
 if input_method == "📁 Upload Image":
     uploaded_file = st.file_uploader("Upload a Wood Image", type=["jpg", "jpeg", "png"])
-    if uploaded_file:
-        image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, caption="Uploaded Image", use_container_width=True)
-        st.success("Image uploaded successfully!")
+    if uploaded_file is not None:
+        try:
+            image = Image.open(uploaded_file).convert("RGB")
+            st.image(image, caption="Uploaded Image", use_container_width=True)
+            st.success("Image uploaded successfully!")
+        except Exception as e:
+            st.error(f"Error loading image: {e}")
 
 elif input_method == "📷 Use Camera":
     camera_image = st.camera_input("Take a Picture")
-    if camera_image:
-        image = Image.open(camera_image).convert("RGB")
-        st.image(image, caption="Captured Image", use_container_width=True)
-        st.success("Image captured successfully!")
+    if camera_image is not None:
+        try:
+            image = Image.open(camera_image).convert("RGB")
+            st.image(image, caption="Captured Image", use_container_width=True)
+            st.success("Image captured successfully!")
+        except Exception as e:
+            st.error(f"Error loading camera image: {e}")
 
 # Prediction function
 def predict_image(img):
