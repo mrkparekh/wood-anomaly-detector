@@ -20,12 +20,6 @@ st.markdown("""
 
 
 # Load model and labels
-model_path = "keras_model.h5"
-file_id = "1YXji47GYbgO0atKJwH2OtS1lIUtS1BaH"  # Replace with your actual file ID
-url = f"https://drive.google.com/uc?id={file_id}"
-
-if not os.path.exists(model_path):
-    gdown.download(url, model_path, quiet=False)
 model = load_model("keras_Model.h5", compile=False)
 class_names = open("labels.txt", "r").readlines()
 
